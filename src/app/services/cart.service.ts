@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Subject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +10,22 @@ export class CartService {
   constructor() { }
 
   Counter = new BehaviorSubject<number>(0);
+  private subject = new Subject<any>();
 
   public count = 0;
   addToCart(count) {
-    this.Counter.next(count+1);
+    this.subject.next(count + 1);
+
+    // this.Counter.next(count+1);
   }
 
   clearCart() {
-    this.Counter.next(0);
+    // this.Counter.next(0);
+    this.subject.next(0);
+  }
+
+  getCart(): Observable<any> {
+    return this.subject.asObservable();
   }
 
   // createwebSocket(url: string): Observable<string> {
