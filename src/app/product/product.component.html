@@ -1,0 +1,12 @@
+<p>product works!</p>
+<div class="text-center">
+  <a routerLink="">Product</a>&nbsp;|&nbsp;
+  <a routerLink="cart-detail">cart detail</a>
+  <p>Cart count</p><span *ngIf="cart && cart.text">{{cart.text}}</span>
+  <!-- main app container -->
+  <h2>This is produst listing page...</h2>
+  <p>Cart count:{{cart}}</p>
+  <button (click)="addToCart()" class="btn btn-primary">Add Product in cart</button>
+  <button (click)="emptyCart()" class="btn btn-secondary">Empty Cart</button>
+
+</div>
